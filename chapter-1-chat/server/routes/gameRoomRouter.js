@@ -7,6 +7,6 @@ const gameRoomRouter = express.Router();
 gameRoomRouter
   .get('/', gameRoom.getAllRooms)
   .post('/', gameRoom.createRoom)
-//   .post('/:roomId', gameRoom.joinRoom)
+  .post('/join', gameRoom.joinRoom)
 
 export { gameRoomRouter };

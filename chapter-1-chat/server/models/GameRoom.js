@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
             default: () => uuidv4().replace(/\-/g, ""),
         },
         name: String,
+        players: Array,
     }
 )
 
@@ -28,6 +29,18 @@ userSchema.statics.getAllRooms = async function () {
     try {
         const gameRooms = await this.find();
         return gameRooms;
+    } catch (error) {
+        throw error;
+    }
+}
+
+userSchema.statics.joinRoom = async function (roomId, userId) {
+    try {
+        const gameRoom = await this.findOneAndUpdate(
+            { _id: roomId },
+            { $addToSet: { players: userId }}    
+        )
+        return gameRoom;
     } catch (error) {
         throw error;
     }

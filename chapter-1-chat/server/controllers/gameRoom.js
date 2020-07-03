@@ -21,5 +21,16 @@ export const gameRoomController = {
         } catch (error) {
             return res.status(500).json({ success: false, error: error })
         }
+    },
+
+    joinRoom: async (req, res) => {
+        try {
+            const { roomId, userId } = req.body;
+            console.log(roomId, userId)
+            const gameRoom = await GameRoomModel.joinRoom(roomId, userId);
+            return res.status(200).json({success: true, gameRoom})
+        } catch (error) {
+            return res.status(500).json({ success: false, error: error })
+        }
     }
 }
