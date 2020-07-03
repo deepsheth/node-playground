@@ -11,6 +11,7 @@ import WebSockets from "./utils/WebSockets.js";
 import indexRouter from "./routes/index.js";
 import userRouter from "./routes/user.js";
 import chatRoomRouter from "./routes/chatRoom.js";
+import {gameRoomRouter} from "./routes/gameRoomRouter.js";
 import deleteRouter from "./routes/delete.js";
 // middlewares
 import { decode } from './middlewares/jwt.js'
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", indexRouter);
 app.use("/users", userRouter);
 app.use("/room", decode, chatRoomRouter);
+app.use("/gameroom", gameRoomRouter);
 app.use("/delete", deleteRouter);
 
 /** catch 404 and forward to error handler */
