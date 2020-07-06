@@ -8,6 +8,8 @@ mongoose.connect(CONNECTION_URL, {
   useUnifiedTopology: true
 })
 
+mongoose.set('useFindAndModify', false);
+
 mongoose.connection.on('connected', () => {
   console.log('Mongo has connected succesfully')
 })

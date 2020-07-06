@@ -6,7 +6,7 @@ export const USER_TYPES = {
   SUPPORT: "support",
 };
 
-const userSchema = new mongoose.Schema(
+export const userSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
